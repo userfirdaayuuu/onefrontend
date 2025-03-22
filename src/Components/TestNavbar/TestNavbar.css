@@ -1,0 +1,20 @@
+.navbar {
+    background: blue;
+    variant: dark;
+    fixed: top;
+    margin-bottom: 2rem;
+    height: 60px;
+}
+
+.button-login {
+    /* background-color: #2563eb; */
+    background-color: black;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #2563eb;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    /* margin-top: 2rem; */
+}

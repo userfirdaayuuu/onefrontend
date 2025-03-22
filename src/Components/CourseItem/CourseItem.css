@@ -1,0 +1,46 @@
+.course-item {
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    /* box-shadow: 0px 0px 10px #00000015; */
+    transition: 0.3s;
+    animation: fadeIn 1s;
+    /* background: blue; */
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    padding: 10px 0; /* Tambahkan padding atas dan bawah */
+    /* min-height: 150px; */
+}
+
+.course-item:hover {
+    transform: scale(1.05);
+}
+
+.course-item-image {
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.course-item-info {
+    padding: 20px;
+}
+
+.course-item-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.course-item-description {
+    color: #676767;
+    font-size: 15px;
+    text-align: left;
+}
+
+.course-item-link {
+    text-decoration: none;
+    color: inherit;
+}

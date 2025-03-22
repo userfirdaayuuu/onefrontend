@@ -1,0 +1,70 @@
+.course-content-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.course-content-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.course-content-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+}
+
+.course-content-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.course-content-video {
+    display: block;
+    text-align: left;
+    margin-top: 50px;
+}
+
+
+/* .course-content-container{
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    text-align: left;
+}
+
+.course-content-title {
+    display: block;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 10rem;
+    margin-top: 8rem;
+    text-align: center;
+}
+
+.course-content-description {
+    display: block;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left !important;
+}
+
+.course-content-video {
+    display: block;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.course-content-video iframe {
+    display: block;
+    margin: 20px auto;
+} */
