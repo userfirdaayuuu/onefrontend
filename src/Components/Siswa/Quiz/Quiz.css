@@ -1,0 +1,50 @@
+.quiz-container {
+    padding: 20px;
+    /* display: grid;
+    grid-template-columns: 4fr;
+    gap: 10px;
+    justify-items: left; */
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+    justify-items: center;
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto; */
+}
+
+.quiz-title {
+    font-size: 30px;
+    color: #2563eb;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.quiz-row {
+    display: flex;
+    justify-content: center;
+    row-gap: 20px; /* Spasi antar baris */
+}
+
+.quiz-col {
+    display: flex;
+    justify-content: center;
+}
+
+.quiz-card {
+    width: 100%;
+    max-width: 300px; 
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.quiz-card:hover {
+    transform: scale(1.05);
+}
+
+/* @media (min-width: 768px) {
+    .course-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  } */

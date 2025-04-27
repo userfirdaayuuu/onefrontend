@@ -1,0 +1,42 @@
+.course-item-container {
+    padding: 20px;
+}
+
+.course-card-title-item {
+    font-size: 18px;
+    color: #2563eb;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.course-card-text-item {
+    text-align: justify;
+}
+
+.course-item-row {
+    display: flex;
+    justify-content: center;
+    row-gap: 20px; /* Spasi antar baris */
+}
+
+.course-item-col {
+    display: flex;
+    justify-content: center;
+}
+
+.course-item-card {
+    width: 100%;
+    max-width: 300px; 
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.course-item-card:hover {
+    transform: scale(1.05);
+}
+
+.course-item-link {
+    text-decoration: none;
+    color: inherit;
+}

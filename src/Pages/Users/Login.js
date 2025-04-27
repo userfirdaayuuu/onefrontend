@@ -1,21 +1,20 @@
 import React from "react";
 import './Users.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import SignIn from "../../Components/User/SignIn";
-// import Navbar from "../../Components/Navbar/Navbar";
 import UserLogin from "../../Components/User/UserLogin";
+// import { MdArrowBackIos } from "react-icons/md";
+// import { Link } from "react-router-dom";
 
-function Login({setShowLogin}) {
+function Login() {
     return ( 
-        // <div className="App">       
-        // <Navbar /> 
-        //     <div className="outer">
-        //         <div className="inner-login">
-        //             <SignIn />
-        //         </div>
-        //     </div>
-        // </div>
+        <div>
+            {/* <div className="back-icon">
+                <Link to="/">
+                    <MdArrowBackIos />
+                </Link>
+        </div> */}
         <UserLogin />
+        </div>
     )
 }
 

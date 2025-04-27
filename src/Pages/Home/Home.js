@@ -1,26 +1,38 @@
 import React from "react";
-import "./Home.css";
-import Header from "../../Components/Header/Header";
+import { useState } from "react";
+// import '../../Components/Headbar/Headbar.css';
+import './Home.css';
+import Sidebar from '../../Components/Siswa/Dasboard/Sidebar/Sidebar';
 // import Course from "../../Components/Course/Course";
-// import CourseDisplay from "../../Components/CourseDisplay/CourseDisplay";
-// import Navbar from "../../Components/Navbar/Navbar";
-import TestNavbar from "../../Components/TestNavbar/TestNavbar";
-import Footer from "../../Components/Footer/Footer";
-import PageCourse from "../Course/PageCourse";
-import Course from "../../Components/Course/Course";
+import Header from '../../Components/Siswa/Dasboard/Header/Header';
+// import NewCourse from '../../Components/Siswa/Dasboard/NewCourse/NewCourse';
+import { GiHamburgerMenu } from "react-icons/gi";
+// import { FaCircleUser } from "react-icons/fa6";
+import BeforeProfileDropdown from '../../Components/Siswa/Dasboard/BeforeProfileDropdown/BeforeProfileDropdown';
+import AfterProfileDropdown from "../../Components/Siswa/Dasboard/AfterProfielDropdown/AfterProfileDropdown";
+import UICardBaru from "../../Components/UIGrid/UICardbaru";
+// import { Link } from "react-router-dom";
 
 const Home = () => {
-
-    // const [category, setCategory] = useState("All");
-
+    const [showNav, setShowNav] = useState(false);
     return (
-        <div className="hero">
-            <TestNavbar />
-            <Header />
-            {/* <Course category={category} setCategory={setCategory} /> */}
-            {/* <CourseDisplay category={category}/> */}
-            <Course />
-            <Footer />
+        <div className="main-content">
+        <header>
+            <GiHamburgerMenu onClick={() => setShowNav(!showNav)}/>
+            {/* <Link to="/login">
+            <FaCircleUser />
+        </Link> */}
+        {/* <BeforeProfileDropdown /> */}
+        <AfterProfileDropdown />
+        </header>
+
+        <Sidebar show={showNav} />
+        <div className={showNav ? "main-content shifted" : "main-content"}>
+        <Header />
+        {/* <Course /> */}
+        {/* <NewCourse /> */}
+        <UICardBaru />
+        </div>        
         </div>
     )
 }

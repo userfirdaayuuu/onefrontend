@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css"; 
-import Tutor from "../Tutor/Tutor";
+import Tutor from "../ProfileTutor/Tutor";
 import { Link } from "react-router-dom";
 
 const About = () => {

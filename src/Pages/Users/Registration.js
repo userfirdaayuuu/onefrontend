@@ -1,23 +1,20 @@
 import React from "react";
 import './Users.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import SignUp from "../../Components/User/Signup";
-// import ButtonHome from "../../Components/User/ButtonHome";
-// import Navbar from "../../Components/Navbar/Navbar";
 import UserRegister from "../../Components/User/UserRegister";
+// import { MdArrowBackIos } from "react-icons/md";
+// import { Link } from "react-router-dom";
 
 function Registration() {
     return ( 
-        // <div className="App">
-        //     <Navbar />
-        //     <ButtonHome />
-        //     <div className="outer">
-        //         <div className="inner-regis">
-        //             <SignUp />
-        //         </div>
-        //     </div>
-        // </div>
-        <UserRegister />
+        <div>
+                    {/* <div className="back-icon">
+                        <Link to="/">
+                            <MdArrowBackIos />
+                        </Link>
+                </div> */}
+                <UserRegister />
+                </div>
     )
 }
 

@@ -18,11 +18,12 @@ const UserLogin = () => {
                         </Form.Group>
                     </Form>
                     <div className='forgot-password'>dont have an account?  
-                                    <Link to='/register'>click here</Link>
-                                    </div>
-                    <Button className="button" variant="primary" type="submit">
-                  Daftar
-                </Button>
+                        <Link to='/register'>click here</Link>
+                    </div>
+                    <div className='d-flex justify-content-between mt-4'>
+                    <Button className="button" variant="secondary" type="button">Back</Button>
+                    <Button className="button" variant="primary" type="submit">Daftar</Button>
+                </div>
                 </Container>
     )
 }

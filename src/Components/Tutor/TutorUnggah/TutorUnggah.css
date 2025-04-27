@@ -1,0 +1,21 @@
+/* Lebar modal */
+.custom-modal-width {
+    width: 400px;
+    margin: auto;
+    border-radius: 10px;
+  }
+  
+  /* Style untuk icon tombol trigger */
+  .upload-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 10px;
+  }
+  
+  /* Hover effect (opsional) */
+  .upload-trigger:hover {
+    color: #007bff;
+  }
+  
