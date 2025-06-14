@@ -1,0 +1,79 @@
+.about-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  /* margin-bottom: 45px; */
+  /* padding: 1.5rem; */
+}
+
+.about-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.about-paragraph,
+.about-contact {
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 1.5rem;
+}
+
+.about-section-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.about-list {
+  list-style-type: disc;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-contact a {
+  color: #2563eb; /* Tailwind's blue-600 */
+  text-decoration: underline;
+}
+
+@media (max-width: 1050px) {
+ 
+}
+
+@media (max-width: 768px) {
+.about-container {
+  max-width: 600px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* padding: 40px; */
+}
+
+/* .detail-info {
+  text-align: justify;
+} */
+}
+
+@media (max-width: 480px) {
+}
+
+@media (max-width: 390px) {
+  .about-title {
+   font-size: 25px;
+  }
+
+  /* .course-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  } */
+
+  .about-container {
+  max-width: 300px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* padding: 40px; */
+}
+
+.detail-info {
+  text-align: justify;
+}
+}

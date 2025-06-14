@@ -1,0 +1,100 @@
+.course-detail-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  /* padding: 40px; */
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.edit {
+  font-weight: 600;
+  background-color:rgb(63, 149, 230);
+  color: #F6F5F2;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s ease;
+}
+
+.edit:hover {
+ background-color: #A7C7E7;
+}
+
+.course-title {
+  text-align: center;
+    margin-top: 2,5rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    /* margin-bottom: 1rem; */
+}
+
+.detail-info {
+  margin-top: 2rem;
+}
+
+.header-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 40px;
+  /* margin-bottom: 1rem;  */
+}
+
+
+.loading-text, .error-text {
+  display: flex;
+  justify-content: center; /* center horizontal */
+  align-items: center;     /* center vertical */
+  height: 100vh;           /* tinggi full layar */
+  text-align: center;
+}
+
+@media (max-width: 1050px) {
+ 
+}
+
+@media (max-width: 768px) {
+.course-detail-container {
+  max-width: 600px;
+  margin: 10px auto;
+  /* padding: 40px; */
+}
+
+.detail-info {
+  text-align: justify;
+}
+}
+
+@media (max-width: 480px) {
+}
+
+@media (max-width: 390px) {
+  .title-detail {
+   font-size: 25px;
+  }
+
+  .course-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .course-detail-container {
+  max-width: 300px;
+  margin: 10px auto;
+  /* padding: 40px; */
+}
+
+.detail-info {
+  text-align: justify;
+}
+}

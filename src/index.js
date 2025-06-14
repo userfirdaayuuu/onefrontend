@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import CourseContextProvider from './Providers/CourseContext';
+// import CourseContextProvider from './Providers/CourseContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <CourseContextProvider>
+  {/* <CourseContextProvider> */}
     <App />
-  </CourseContextProvider>
+  {/* </CourseContextProvider> */}
   </BrowserRouter>
 
 );

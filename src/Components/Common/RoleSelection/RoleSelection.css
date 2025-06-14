@@ -1,0 +1,69 @@
+/* RoleSelection.css */
+.role-selection-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.role-selection-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.role-selection-title {
+  font-size: 2rem;
+  font-weight: 600;
+  max-width: 300px;
+}
+
+.role-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 300px;
+}
+
+.role-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #E8F6FF;
+  border-radius: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  height: 100px;
+}
+
+.role-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.role-icon {
+  margin-right: 1rem;
+  color: #2563eb;
+  font-size: 2rem;
+}
+
+.role-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #666666;
+}
+
+@media (max-width: 768px) {
+  .role-selection-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .role-selection-title {
+    max-width: 100%;
+  }
+}

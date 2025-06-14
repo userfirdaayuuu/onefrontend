@@ -1,0 +1,87 @@
+/* :root {
+  --primary-bg: #ffffff;
+  --accent-color: #00AEEF;
+  --text-color: #2F4F4F;
+  --card-border: #DDE2E6;
+  --hover-bg: #DCEEF9;
+  --sidebar-bg: #F0F4F8;
+  --success-color: #2ECC71;
+  --background-general: #F5F7FA;
+} */
+
+.myaccount-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #00AEEF;
+  border-radius: 10px;
+}
+
+.myaccount-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: #00AEEF;
+  text-align: center;
+}
+
+.myaccount-card {
+  background-color: #F6F5F2;
+  /* border: 1px solid var(--card-border); */
+  border-radius: 5px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  /* color: var(--text-color);/ */
+  max-width: 600px;
+}
+
+.secondary-card {
+  background-color: #F0F9FF;
+}
+
+.tutor-card {
+  background-color: #E8FDF5;
+}
+
+.myaccount-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2F4F4F;
+}
+
+.myaccount-card ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.myaccount-card li {
+  list-style-type: disc;
+}
+
+@media (max-width: 1050px) {
+ 
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+}
+
+@media (max-width: 390px) {
+  .myaccount-card {
+  width: 100%;
+  max-width: 350px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+}

@@ -1,138 +1,76 @@
-import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
-import { CourseContext } from "../../../Providers/CourseContext";
+// components/TutorCourseDisplay/TutorCourseDisplay.jsx
+import React, { useEffect, useState } from "react";
+import { useParams,  useNavigate } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 import TutorCourseItem from "../TutorCourseItem/TutorCourseItem";
-import { MdOutlineUploadFile } from "react-icons/md";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import * as bootstrap from "bootstrap";
-import "./TutorCourseDisplay.css";
-
-
+import BackButton from "../../Common/Back/BackButton";
+import { Button } from "react-bootstrap";
+import "../../Style/CourseDisplay.css";
+import AuthServices from "../../../Auth/AuthServices";
+ 
 const TutorCourseDisplay = () => {
-  const { course_name } = useParams();
-  const { course_list } = useContext(CourseContext);
+  const { id } = useParams();
+  const [materiList, setMateriList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  const [judul, setJudul] = useState("");
-  const [file, setFile] = useState(null);
-
-  if (!course_list) return <h2>Loading...</h2>;
-
-  const filteredCourses = course_list.filter(
-    (course) => course.course_name.toLowerCase() === course_name.toLowerCase()
-  );
-
-  if (filteredCourses.length === 0) return <h2>Course tidak ditemukan</h2>;
-
-  // 🔧 Fungsi menutup modal + hapus backdrop
-  const closeModal = () => {
-    const modalEl = document.getElementById("uploadModal");
-    const modalInstance = bootstrap.Modal.getInstance(modalEl);
-    if (modalInstance) modalInstance.hide();
-
-    const backdrop = document.querySelector(".modal-backdrop");
-    if (backdrop) backdrop.remove();
-
-    document.body.classList.remove("modal-open");
-    document.body.style = "";
-  };
-
-  // ✅ Handle Upload
-  const handleUpload = (e) => {
-    e.preventDefault();
-
-    if (!judul || !file) {
-      toast.error("Judul dan file wajib diisi!");
-      return;
-    }
-
-    // Proses upload bisa diganti sesuai backend kamu
-    console.log("Upload materi:", judul, file);
-
-    toast.success("Materi berhasil diupload!");
-    setJudul("");
-    setFile(null);
-    closeModal();
-  };
+  useEffect(() => {
+      const fetchMaterials = async () => {
+        try {
+          const response = await AuthServices.getMateriKursus(id);
+          console.log("Materi yang diambil:", response);
+          if (response.success) {
+            setMateriList(response.data);
+          } else {
+            console.error("Gagal fetch materi:", response);
+          }
+        } catch (error) {
+          console.error("Gagal mengambil materi:", error);
+          setMateriList([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchMaterials();
+    }, [id]);
+  
+    const courseTitle = materiList[0]?.kursus?.namaKursus?.toUpperCase() || "MATERI";
 
   return (
     <>
-    <ToastContainer/>
-      <div className="course-display">
-        <h2 className="course-display-title">{course_name.toUpperCase()}</h2>
-        <div className="course-display-list">
-          {filteredCourses.map((item) => (
-            <TutorCourseItem
-              key={item._id}
-              id={item._id}
-              name={item.name}
-              description={item.description}
-              image={item.image}
-            />
-          ))}
-        </div>
+      <div className="button-back">
+        <BackButton />
       </div>
 
-      {/* ICON UPLOAD */}
-      <div className="upload-icon">
-        <button
-          className="upload-trigger"
-          data-bs-toggle="modal"
-          data-bs-target="#uploadModal"
-        >
-          <MdOutlineUploadFile size={28} />
-        </button>
-      </div>
+            <Container className="py-5">
+        <h2 className="course-title-display">{courseTitle}</h2>
 
-      {/* MODAL UPLOAD */}
-      <div className="modal fade" id="uploadModal" tabIndex="-1">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content custom-modal-width">
-            <div className="modal-header">
-              <h5 className="modal-title">Upload Materi</h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <form onSubmit={handleUpload}>
-                <div className="mb-3">
-                  <label className="form-label">Judul Materi</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Judul Materi"
-                    value={judul}
-                    onChange={(e) => setJudul(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">File Materi</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={(e) => setFile(e.target.files[0])}
-                  />
-                </div>
-                <div className="modal-footer justify-content-center">
-                  <button
-                    type="button"
-                    className="btn btn-secondary me-2"
-                    data-bs-dismiss="modal"
-                  >
-                    Batal
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    Upload
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+        {loading ? (
+          <p className="text-center">Loading...</p>
+        ) : materiList.length === 0 ? (
+          <h4 className="text-center">Belum ada materi</h4>
+        ) : (
+          <Row className="g-4 justify-content-center">
+            {materiList.map((materi) => (
+              <Col xs={12} sm={6} md={4} lg={3} key={materi.id}>
+                <TutorCourseItem
+                  id={materi.id}
+                  name={materi.judul_materi}
+                  courseId={id}
+                />
+              </Col>
+            ))}
+          </Row>
+        )}
+      </Container>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "15px", marginBottom: "30px" }}>
+  <Button 
+    className="upload-button"
+    onClick={() => navigate(`/tutor-course/${id}/upload`)}>
+    Unggah Materi
+  </Button>
+</div>      
     </>
   );
 };

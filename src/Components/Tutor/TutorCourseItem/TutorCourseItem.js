@@ -1,37 +1,89 @@
-import React from "react";
-import "./TutorCourseItem.css";
-import { Link } from "react-router-dom";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { toast } from "react-toastify";
 
-const TutorCourseItem = ({id, name, description, course_name}) => {
+import "../../Style/Material.css";
+import AuthServices from "../../../Auth/AuthServices";
 
+const TutorCourseItem = ({ id, name, onDelete, courseId }) => {
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef();
+  const navigate = useNavigate();
 
-    return (
-        <Link to={`/course/${course_name}/materials/${id}`} className="course-item-link">
-        <Container fluid className="course-item-container">
-            <Row className="course-item-row">
-                <Col className="course-item-col">
-                <Card className="course-item-card">
-                    <Card.Body className="course-card-body-item">
-                        <Card.Title className="course-card-title-item">{name}</Card.Title>
-                        <Card.Text className="course-card-text-item">{description}</Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-            </Row>
-        </Container>
-        
-        
-        {/* <div className="course-item">
-            <div className="course-item-info">
-                <p className="course-item-name">{name}</p>
-                <p className="course-item-description">{description}</p>
-                
+  // Toggle menu tampil
+  const toggleMenu = (e) => {
+    e.stopPropagation();
+    setShowMenu((prev) => !prev);
+  };
+
+  // Deteksi klik di luar menu
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Hapus materi
+  const handleDelete = async (id) => {
+    try {
+      const confirmDelete = window.confirm("Apakah Anda yakin ingin menghapus materi ini?");
+      if (!confirmDelete) return;
+
+      const response = await AuthServices.deleteMateri(id);
+      if (response.success) {
+        toast.success("Materi berhasil dihapus");
+        onDelete(id);
+      }
+    } catch (error) {
+      console.error("Error saat menghapus materi:", error);
+      toast.error("Gagal menghapus materi. Silakan coba lagi.");
+    }
+  };
+
+  return (
+    <div ref={menuRef}>
+      <Card className="materi-card shadow-sm h-100">
+            <Card.Body className="d-flex flex-column justify-content-between">
+
+          {/* Tombol Menu */}
+          <div className="menu-button" onClick={toggleMenu}>
+            <BsThreeDotsVertical className="dots-icon" />
+          </div>
+
+          {/* Dropdown Menu */}
+          {showMenu && (
+            <div className="card-menu-dropdown" onClick={(e) => e.stopPropagation()}>
+              <button onClick={() => handleDelete(id)}>Hapus Materi</button>
             </div>
-        </div> */}
+          )}
 
-        </Link>
-    )
-}
+          {/* Judul dan tombol */}
+        <div>
+                  <Card.Title className="materi-title mb-3">
+                    {name || "Tanpa Judul"}
+                  </Card.Title>
+                </div>
+                <div className="mt-auto d-grid">
+                  <Button
+                    className="btn-lihat-materi"
+                    onClick={() => navigate(`/course-material/${courseId}/${id}`)}
+                  >
+                    Lihat Materi
+                  </Button>
+                </div>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+};
 
 export default TutorCourseItem;

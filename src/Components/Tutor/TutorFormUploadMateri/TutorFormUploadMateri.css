@@ -1,0 +1,53 @@
+.page-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Penuhi tinggi layar */
+  background-color: #f8f9fa; /* Optional: biar ada background */
+  padding: 20px;
+}
+
+.upload-form-container {
+    background-color: #ffffff;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* UploadMateriForm.css */
+
+/* .upload-form-container {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+} */
+
+.upload-form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.upload-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-form-button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}

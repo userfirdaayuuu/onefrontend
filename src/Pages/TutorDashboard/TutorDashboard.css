@@ -1,0 +1,9 @@
+.main-content {
+    transition: margin-left 0.3s ease;
+    margin-left: 0;
+    padding-top: 20px;
+  }
+  
+  .sidebar.active ~ .main-content {
+    margin-left: 0; /* Tetap 0 biar nggak terdorong */
+  }

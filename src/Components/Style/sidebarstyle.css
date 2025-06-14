@@ -1,0 +1,41 @@
+.sidebar {
+  width: 240px;
+  background: #DDE3ED;
+  color: #333;
+  position: fixed;
+  top: 0;
+  left: -240px;
+  height: 100%;
+  padding: 80px 30px 0;
+  transition: left 0.3s ease;
+  z-index: 1100;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.logo {
+  width: 50px;
+  border-radius: 5px;
+}
+
+ul {
+  padding: 0;
+}
+ul li {
+  list-style-type: none;
+  margin: 10px 0;
+}
+ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 6px;
+}
+ul li a:hover,
+ul li a.active {
+  background: #A7C7E7;;
+}

@@ -1,0 +1,50 @@
+.layout {
+    display: flex;
+  }
+  
+  /* Hamburger icon harus berada di paling atas */
+  .hamburger-icon {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    z-index: 2000; /* PASTIKAN ini PALING TINGGI */
+    font-size: 30px;
+    cursor: pointer;
+    color: #00CFFF;
+  }
+  
+  .main {
+    flex: 1;
+    margin-left: 0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FAFAFA;
+    height: 50px;
+    color: #eaecef;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .content {
+    padding-top: 80px;
+    padding: 80px 20px 20px;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    z-index: 1001; /* Masih di bawah hamburger */
+  }
+  

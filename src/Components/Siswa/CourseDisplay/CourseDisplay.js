@@ -1,42 +1,68 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CourseContext } from "../../../Providers/CourseContext";
+import { Container, Row, Col } from "react-bootstrap";
+import BackButton from "../../Common/Back/BackButton";
+import AuthServices from "../../../Auth/AuthServices";
 import CourseItem from "../CourseItem/CourseItem";
-import "./CourseDisplay.css";
+import "../../Style/CourseDisplay.css";
 
 const CourseDisplay = () => {
-    const { course_name } = useParams();
-    console.log("course_name dari URL:", course_name);
+  const { id } = useParams();
+  const [materiList, setMateriList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const { course_list } = useContext(CourseContext);
-    console.log("course_list:", course_list);
+  useEffect(() => {
+    const fetchMaterials = async () => {
+      try {
+        const response = await AuthServices.getMateriKursus(id);
+        console.log("Materi yang diambil:", response);
+        if (response.success) {
+          setMateriList(response.data);
+        } else {
+          console.error("Gagal fetch materi:", response);
+        }
+      } catch (error) {
+        console.error("Gagal mengambil materi:", error);
+        setMateriList([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    if (!course_list) return <h2>Loading...</h2>;
+    fetchMaterials();
+  }, [id]);
 
-    // Filter materi berdasarkan course_name dari URL
-    const filteredCourses = course_list.filter(course => 
-        course.course_name.toLowerCase() === course_name.toLowerCase()
-    );
-    console.log("Filtered Courses:", filteredCourses);
+  const courseTitle = materiList[0]?.kursus?.namaKursus?.toUpperCase() || "MATERI";
 
-    if (filteredCourses.length === 0) return <h2>Course tidak ditemukan</h2>;
+  return (
+    <>
+      <div className="button-back">
+        <BackButton />
+      </div>
 
-    return (
-        <div className="course-display">
-            <h2 className="course-display-title">{course_name.toUpperCase()}</h2>
-            <div className="course-display-list">
-                {filteredCourses.map((item) => (
-                    <CourseItem
-                        key={item._id}
-                        id={item._id}
-                        name={item.name}
-                        description={item.description}
-                        image={item.image}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+      <Container className="py-5">
+        <h2 className="course-title-display">{courseTitle}</h2>
+
+        {loading ? (
+          <p className="text-center">Loading...</p>
+        ) : materiList.length === 0 ? (
+          <h4 className="text-center">Belum ada materi</h4>
+        ) : (
+          <Row className="g-4 justify-content-center">
+            {materiList.map((materi) => (
+              <Col xs={12} sm={6} md={4} lg={3} key={materi.id}>
+                <CourseItem
+                  id={materi.id}
+                  name={materi.judul_materi}
+                  courseId={id}
+                />
+              </Col>
+            ))}
+          </Row>
+        )}
+      </Container>
+    </>
+  );
 };
 
 export default CourseDisplay;
